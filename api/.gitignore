@@ -1,0 +1,34 @@
+# Build output
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code / Visual Studio files
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ASP.NET secrets
+secrets.json
+
+# Entity Framework
+Migrations/
+
+# SQLite Database (optional: include if you want a clean DB per dev)
+*.db
+
+# Other config files
+appsettings.Development.json
