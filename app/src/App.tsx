@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <h1>Task Manager</h1>
+      <h1>Welcome to the Task Manager</h1>
     </>
   );
 }

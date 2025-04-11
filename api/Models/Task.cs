@@ -6,6 +6,7 @@ namespace api.Models
 {
     public class Task
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Task title is required")]
