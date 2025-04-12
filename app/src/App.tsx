@@ -1,8 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import MainPage from "./pages/MainPage";
+import TaskListPage from "./pages/TaskListPage";
+
 function App() {
   return (
-    <>
-      <h1>Welcome to the Task Manager</h1>
-    </>
+    <Router>
+      <Navbar />
+      <div className="container mt-4">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/TaskList" element={<TaskListPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,12 +1,17 @@
 import { Task } from "../interfaces/Task";
+import { useState } from "react";
 import {
   deleteTask,
   toggleTaskCompletion,
   updateTask,
 } from "../provider/TaskApi";
-import { useState } from "react";
 
-const TaskCard = ({ task }: { task: Task }) => {
+interface TaskCardProps {
+  task: Task;
+  onRefresh: () => void;
+}
+
+function TaskCard({ task, onRefresh }: TaskCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
   const [editedDescription, setEditedDescription] = useState(task.description);
@@ -14,6 +19,7 @@ const TaskCard = ({ task }: { task: Task }) => {
   const handleToggleCompletion = async () => {
     try {
       await toggleTaskCompletion(task.id);
+      onRefresh(); // Refresh the task list after toggling completion
     } catch (error) {
       console.error("Error toggling task completion:", error);
     }
@@ -22,6 +28,7 @@ const TaskCard = ({ task }: { task: Task }) => {
   const handleDelete = async () => {
     try {
       await deleteTask(task.id);
+      onRefresh(); // Refresh the task list after deletion
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -35,6 +42,8 @@ const TaskCard = ({ task }: { task: Task }) => {
         description: editedDescription,
       };
       await updateTask(updatedTask);
+      setIsEditing(false); // Exit editing mode after saving
+      onRefresh(); // Refresh the task list after updating
     } catch (error) {
       console.error("Error updating task:", error);
     }
@@ -99,6 +108,6 @@ const TaskCard = ({ task }: { task: Task }) => {
       </div>
     </div>
   );
-};
+}
 
 export default TaskCard;

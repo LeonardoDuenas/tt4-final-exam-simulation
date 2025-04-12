@@ -9,7 +9,7 @@ const API = axios.create({
 
 export const getTasks = async () => {
   try {
-    const response = await API.get<Task[]>("/tasks");
+    const response = await API.get<Task[]>("/api/task");
     return response.data;
   } catch (error) {
     console.error("Error fetching tasks:", error);
@@ -19,7 +19,7 @@ export const getTasks = async () => {
 
 export const createTask = async (task: Task) => {
   try {
-    const response = await API.post<Task>("/task", task);
+    const response = await API.post<Task>("/api/task", task);
     return response.data;
   } catch (error) {
     console.error("Error creating task:", error);
@@ -29,7 +29,7 @@ export const createTask = async (task: Task) => {
 
 export const updateTask = async (task: Task) => {
   try {
-    const response = await API.put<Task>(`/task/${task.id}`, task);
+    const response = await API.put<Task>(`/api/task/${task.id}`, task);
     return response.data;
   } catch (error) {
     console.error("Error updating task:", error);
@@ -39,7 +39,7 @@ export const updateTask = async (task: Task) => {
 
 export const deleteTask = async (taskId: number) => {
   try {
-    const response = await API.delete(`/task/${taskId}`);
+    const response = await API.delete(`/api/task/${taskId}`);
     return response.data;
   } catch (error) {
     console.error("Error deleting task:", error);
@@ -49,7 +49,7 @@ export const deleteTask = async (taskId: number) => {
 
 export const getTaskById = async (taskId: number) => {
   try {
-    const response = await API.get<Task>(`/task/${taskId}`);
+    const response = await API.get<Task>(`/api/task/${taskId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching task by ID:", error);
@@ -59,7 +59,7 @@ export const getTaskById = async (taskId: number) => {
 
 export const toggleTaskCompletion = async (taskId: number) => {
   try {
-    const response = await API.patch<Task>(`/task/${taskId}/toggle`);
+    const response = await API.patch<Task>(`/api/task/${taskId}/toggle`);
     return response.data;
   } catch (error) {
     console.error("Error toggling task completion:", error);
