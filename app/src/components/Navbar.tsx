@@ -22,7 +22,7 @@ function Navbar() {
           <Link className="nav-link" to="/TaskList">
             Task List
           </Link>
-          <Link className="nav-link" to="/CreaterTask">
+          <Link className="nav-link" to="/CreateTask">
             Create
           </Link>
         </div>
